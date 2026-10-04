@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying papers."
+title: "ueg_exchange: analysis of the RPA-screened second-order exchange diagram of the uniform electron gas"
+authors:
+  - family-names: Imoto
+    given-names: Fumihiro
+version: 0.4.0
+date-released: 2026-05-31
+license: MIT
+references:
+  - type: article
+    title: "Low- and high-density asymptotics of RPA-screened second-order exchange in the spin-polarized uniform electron gas"
+    authors:
+      - family-names: Imoto
+        given-names: Fumihiro
+    journal: "Physical Review B (submitted)"
+    year: 2026
+  - type: article
+    title: "Analytic structure of screened second-order exchange in the uniform electron gas"
+    authors:
+      - family-names: Imoto
+        given-names: Fumihiro
+    journal: "Annals of Physics (submitted)"
+    year: 2026
