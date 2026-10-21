@@ -4,8 +4,8 @@ title: "ueg_exchange: analysis of the RPA-screened second-order exchange diagram
 authors:
   - family-names: Imoto
     given-names: Fumihiro
-version: 0.4.0
-date-released: 2026-05-31
+version: 0.5.0
+date-released: 2026-10-21
 license: MIT
 references:
   - type: article
@@ -13,12 +13,12 @@ references:
     authors:
       - family-names: Imoto
         given-names: Fumihiro
-    journal: "Physical Review B (submitted)"
+    status: submitted
     year: 2026
   - type: article
-    title: "Analytic structure of screened second-order exchange in the uniform electron gas"
+    title: "Revisiting the r_s expansion of the uniform electron gas in d dimensions: log r_s terms from coincident Mellin poles"
     authors:
       - family-names: Imoto
         given-names: Fumihiro
-    journal: "Annals of Physics (submitted)"
+    status: submitted
     year: 2026

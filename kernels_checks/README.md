@@ -1,4 +1,6 @@
-# Executable checks for the kernels paper
+# Executable checks (earlier kernels manuscript, partly used by the Mellin-pole paper)
+
+These checks were written for an earlier manuscript on spectral kernels and Feynman-diagram weights, which was not published and whose material was revised into the Mellin-pole paper. The checks used by that paper are listed in `../mpp_checks/README.md` (SI Sec. S19). Section numbers below refer to the earlier manuscript.
 
 All six scripts were executed for the final release on 29 September 2026.
 Every stored numerical value agrees with the earlier archived record;

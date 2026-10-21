@@ -1,6 +1,6 @@
-# Reviewer verification notebook for the kernels paper
+# Reviewer verification notebook of the earlier kernels manuscript
 
-The kernels paper (Spectral kernels and Feynman-diagram weights for screened-exchange energies) has its appendices, labelled A–I, in its Supplementary Material.
+This notebook was written for an earlier manuscript (Spectral kernels and Feynman-diagram weights for screened-exchange energies), which was not published and whose material was revised into the Mellin-pole paper. Appendix labels A–I refer to that manuscript. The notebook is kept as a record.
 
 Execute the `.ipynb` cells in order.
 The notebook is self-contained apart from its Python dependencies.

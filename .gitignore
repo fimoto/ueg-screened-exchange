@@ -1,5 +1,5 @@
 # Allowlist: ignore everything, then admit only what is needed to reproduce
-# the spin paper and the kernels paper, with their supplementary material. Files added later stay private unless
+# the spin paper and the Mellin-pole paper, with their supplementary material, and the record of the earlier kernels manuscript. Files added later stay private unless
 # admitted here.
 /*
 
@@ -43,7 +43,7 @@
 /validation/results/*.log
 /validation/patches/README_patches_ja.md
 
-# Input data, PRB figures and the data behind every plotted curve
+# Input data, spin-paper figures and the data behind every plotted curve
 !/data/
 !/figs/
 /figs/*
@@ -62,7 +62,7 @@
 !/figs/fig_spin_bias.pdf
 !/figs/fig_spin_interpolation.pdf
 !/figs/fig_highdensity.pdf
-# kernels-paper figures (SM Figs. S1-S4) and the grids behind them
+# figures of the earlier kernels manuscript (SM Figs. S1-S4) and the grids behind them
 !/figs/make_phi_fig.py
 !/figs/make_xc_fig.py
 !/figs/make_lorentzian_figs.py
@@ -82,7 +82,7 @@
 !/plot_data/spin/
 !/plot_data/kernels/
 
-# Kernels-paper checks (SM Sec. S4) and reviewer notebook
+# Checks of the earlier kernels manuscript (SM Sec. S4, partly used by the Mellin-pole paper) and its reviewer notebook
 !/kernels_checks/
 !/kernels_review/
 /kernels_review/*
@@ -102,6 +102,11 @@
 /scripts/test_tex_code_formulas_mutations.py
 /scripts/tex_code_formulas*.json
 /scripts/export_plot_data.py
+
+# Mellin-pole paper: numerical checks, figure data, figure scripts and the Wolfram Language notebook
+!/mpp_checks/
+!/mpp_review/
+!/mpp_figures/
 
 # External check of two coefficient integrals (requires pySecDec)
 !/pysecdec_check/

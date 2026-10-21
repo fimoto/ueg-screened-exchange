@@ -2,10 +2,12 @@
 
 Code and data for two papers by F. Imoto. Directory names refer to the papers by content:
 
-* **spin paper** (`spin/`, `plot_data/spin/`, `REPRODUCE_SPIN.md`): *Low- and high-density asymptotics of RPA-screened second-order exchange in the spin-polarized uniform electron gas* (submitted to Physical Review B);
-* **kernels paper** (`kernels_checks/`, `kernels_review/`, `plot_data/kernels/`): *Spectral kernels and Feynman-diagram weights for screened-exchange energies: Analytic structure of screened second-order exchange in the electron gas* (submitted to Annals of Physics). Its Appendices A–I are in its Supplementary Material.
+* **spin paper** (`spin/`, `plot_data/spin/`, `REPRODUCE_SPIN.md`): *Low- and high-density asymptotics of RPA-screened second-order exchange in the spin-polarized uniform electron gas* (submitted);
+* **Mellin-pole paper** (`mpp_checks/`, `mpp_review/`, `mpp_figures/`, and the checks in `kernels_checks/` listed in its table below): *Revisiting the $r_s$ expansion of the uniform electron gas in $d$ dimensions: $\log r_s$ terms from coincident Mellin poles* (submitted), manuscript version v4.21.
 
-Every number, table and figure of both papers and their supplementary material can be regenerated from this repository, either from stored raw data or by recomputation.
+`kernels_checks/`, `kernels_review/` and `plot_data/kernels/` were written for an earlier manuscript on spectral kernels and Feynman-diagram weights. That manuscript was not published. Its material was revised into the Mellin-pole paper, which uses some of these checks (SI Sec. S19). The rest is kept as a record and is listed in the section on the earlier manuscript below.
+
+Every number, table and figure of these two papers and their supplementary material can be regenerated from this repository, either from stored raw data or by recomputation.
 
 ## Quick start
 
@@ -38,7 +40,9 @@ The production records were written with Python 3.12.14, NumPy 2.3.5 and SciPy 1
 
 Figures 1 and 3 are diagrams drawn in the manuscript source. `REPRODUCE_SPIN.md` gives step-by-step commands for the production tables and figures.
 
-## Kernels paper: where each result comes from
+## Earlier kernels manuscript (not published): material kept as a record
+
+Figure and section numbers in this table refer to that manuscript and its Supplementary Material (SM).
 
 | Item | Code | Data |
 |---|---|---|
@@ -54,7 +58,30 @@ Figures 1 and 3 are diagrams drawn in the manuscript source. `REPRODUCE_SPIN.md`
 
 Run times on one core: `bash kernels_checks/run_all.sh` about 10 s (it rewrites the stored records byte for byte, apart from `environment.json`, which records the local package versions); the reviewer notebook about 7 min (`python -m pip install -r kernels_review/requirements.txt`, then `python kernels_review/execute_notebook.py kernels_review/kernels_reviewer_verification.ipynb rerun.ipynb`, 388 checks); `scripts/build_phi_grid_corrected.py` a few seconds; the point checks of the $\Phi$ grid several minutes each; the Monte Carlo sampling of the grids hours.
 
-The data behind every plotted curve of both papers are in `plot_data/spin/` and `plot_data/kernels/`. `LIMITATIONS.md` states what each numerical check does and does not establish, including the sampling of the $\Phi$ grid.
+## Mellin-pole paper: where each result comes from
+
+Equation, table and section numbers refer to manuscript version v4.21 (main text Eqs. (1)–(59), Supporting Information (SI) Eqs. (S1)–(S104)). `mpp_checks/README.md` lists every reproduced number with its script, and each script stores its checks in `mpp_checks/results/`.
+
+| Manuscript item | Code | Data |
+|---|---|---|
+| Closed forms and symbolic identities of the main text and SI | `mpp_review/MPP_checks_v4.21.ipynb` (Wolfram Language; `.wls` script version) | `mpp_review/wolfram_check_results_v4.21.json` after execution |
+| $d$-dimensional constants and the Lindhard shape $h_d$, $g_2$, $g_3$ (main Sec. 2.2, SI Sec. S1, Table S2) | `mpp_checks/c01_lindhard_d.py` | `mpp_checks/results/` |
+| Ring series in $d$ dimensions, $A_d$ and Table 2, comparison with Schlesier et al. (main Sec. 2.8, SI Sec. S2) | `mpp_checks/c02_ring_d.py` | `mpp_checks/results/` |
+| First-order exchange polarization in 3D and the Carr–Maradudin coefficient (main Sec. 2.9, SI Sec. S3) | `mpp_checks/c03_response_3d.py` | `mpp_checks/results/` |
+| Closed form of $R_2$, its quadrature check and the Ward slopes (main Sec. 3.1, Eq. (58), SI Sec. S4) | `mpp_checks/c04_R2.py` | `mpp_checks/results/` |
+| Coefficient $a_{2\ell}$ (main Eqs. (39)–(40), SI Sec. S5) | `mpp_checks/c05_a2l.py` | `mpp_checks/results/` |
+| Finite wave number in 2D, SI Table S3 and the static comparison with Das Sarma (SI Sec. S6) | `mpp_checks/c06_finiteq_2d.py`, `mpp_checks/finiteq2d.py`, `mpp_checks/c12_static_dassarma.py`, `mpp_checks/finiteq2d_static*.py` | `mpp_checks/results/` |
+| Screened internal exchange line (SI Sec. S7); spin polarization, SI Table S4 (SI Sec. S8) | `mpp_checks/c07_screened_line.py`, `mpp_checks/c08_spin_2d.py` | `mpp_checks/results/` |
+| Kite normalization, Lindhard function and Monte Carlo of $\mathcal K[v]$ (SI Sec. S19) | `mpp_checks/c09_kite_3d.py` | `mpp_checks/results/` |
+| Frequency integrals, radial reductions, $A_1$ and its cancellation, coupling identities (SI Sec. S19) | `kernels_checks/` (see also the table of the earlier manuscript above) | `kernels_checks/*.json` |
+| Direct high-density values of $e_{\rm kite}$ and the fits (main Sec. 3.3, SI Sec. S19, Table S5) | `validation/high_density/run_direct_high_density.py`, `mpp_checks/c10_hd_fit.py` | `validation/high_density/results/`, `mpp_checks/results/` |
+| Low-density term $A_1/q_*$, Table 3, direct values at $r_s=10^8$, $2\times10^5$, $10^6$ and the momentum-cutoff comparison with BRM (main Sec. 3.3) | `mpp_checks/c11_lowdensity_kite.py`, `production/`, `validation/run_cutoff_scan.py` | `production/raw/tableI/`, `production/reference_brm.json`, `validation/results/cutoff_scan_summary.json` |
+| Data behind main Figs. 1, 2 and 4 | `mpp_checks/fig_data.py` | `mpp_checks/figure_data/` |
+| Main Figs. 1–4 (Figs. 1, 2, 4 matplotlib, Fig. 3 TikZ) | `mpp_figures/make_figures.py` | `mpp_figures/fig*.pdf` |
+
+Run times on one core: `python mpp_checks/run_all.py` about 1.5 h (`--quick` about 3 min); the Wolfram notebook a few minutes.
+
+The data behind every plotted curve of the spin paper and of the earlier kernels manuscript are in `plot_data/spin/` and `plot_data/kernels/`. `LIMITATIONS.md` states what each numerical check does and does not establish, including the sampling of the $\Phi$ grid.
 
 ## Integrity
 
@@ -75,8 +102,11 @@ independent_audit/   third, separately written implementation (SM S7)
 validation/          spin-dependent and convergence checks (SM S7-S11)
 scripts/             analytic checks, grid generation for Phi and X_c, diagnostics
 figs/, plot_data/    figure scripts and the data behind every plotted curve
-kernels_checks/      kernels-paper checks (SM Sec. S4)
-kernels_review/      kernels-paper reviewer notebook and Mathematica checks
+kernels_checks/      checks written for the earlier kernels manuscript, partly used by the Mellin-pole paper
+kernels_review/      reviewer notebook and Mathematica checks of the earlier kernels manuscript
+mpp_checks/          Mellin-pole paper: numerical checks, figure data
+mpp_review/          Mellin-pole paper: Wolfram Language notebook of the closed forms
+mpp_figures/         Mellin-pole paper: scripts of the main-text figures and the PDF files
 pysecdec_check/      external check of two coefficient integrals
 tests/               unit and contract tests
 data/                input and reference tables

@@ -234,7 +234,7 @@ python production/verify.py --manifest
 
 The manifest records the integrity of the reviewed release; it does not prove
 the mathematical derivation. `--seal` is an explicit release step, not an
-automatic repair operation. The kernels paper has its own checks in `kernels_checks/` and `kernels_review/`;
+automatic repair operation. The checks in `kernels_checks/` and `kernels_review/` are documented separately;
 this document governs the spin paper in `spin/`.
 
 Guard regression checks (no expensive integral):
